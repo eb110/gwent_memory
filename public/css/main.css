@@ -52,17 +52,17 @@ p
     transition: all .3s ease-in-out;
 }
 
-.card2
+.cardA
 {
     width: 125px;
     height: 125px;
     display: inline-block;
     margin: 3px;
-    background-image: url("../img/ciri.png");
-    border: 4px solid #51c8b2;
+    background-image: url("../img/karta.png");
+    border: 4px solid #E9b64a;
     border-radius: 4px;
-    cursor: pointer;
-    filter: brightness(70%);
+    cursor: default;
+    filter: brightness(100%);
     transition: all .3s ease-in-out;
 }
 
