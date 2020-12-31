@@ -38,6 +38,13 @@ p
     text-align: center;
 }
 
+#ajax
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
 .card
 {
     width: 125px;

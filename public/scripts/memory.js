@@ -59,3 +59,38 @@ function hide2Cards(nr1, nr2){
     }
     lock = false
 }
+
+$(function() {
+    /*
+    $('#btn').on('click', () => {
+        $.ajax({
+            url: '/games/test',
+            contentType: 'application/json',
+            success: (response) => {
+                let UserContent = $('#ax1')
+                UserContent.html('')
+                    UserContent.append('\
+                    <div>DUPA</div>\
+                    ')
+            }})})
+
+
+*/
+
+
+
+    //post
+    $('#ajax').on('click', '#btn', function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: '/games/gwen_highscore',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ counter: turnCounter}),
+            success: (response) => {
+                console.log(response)
+            }
+        })
+    })
+    
+})
