@@ -1,3 +1,5 @@
+HS()
+
 let cards = ["ciri.png", "geralt.png", "jaskier.png", "jaskier.png", "iorweth.png", "triss.png", "geralt.png", "yen.png", "ciri.png", "triss.png", "yen.png", "iorweth.png"]
 
 let individual_cards = [c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11]
@@ -13,6 +15,9 @@ let turnCounter = 0
 let visible_nr
 let lock = false
 let parisLeft = 6
+let hs = []
+
+console.log($('#name').text())
 
 function revealCard(nr) {
     let opacityValue = $(`#c${nr}`).css('opacity')
@@ -56,33 +61,47 @@ function hide2Cards(nr1, nr2){
     parisLeft--
     if(parisLeft == 0){
         $('.board').html(`<h1>You win!<br>Done in ${turnCounter} turns</h1>`)
+        if(turnCounter < hs[9].score){
+            let wsad = {}
+            wsad.name = 'empty'
+            wsad.score = turnCounter
+            wsad.name = $('#name').text()
+        
+            console.log(wsad.name)
+            hs.push(wsad)
+            hs.sort((a,b) => a.score - b.score)
+            hs = hs.slice(0,10)
+            updateHS()
+        }
     }
-    lock = false
+    lock = false    
 }
 
-$(function() {
-    
-    //post
-    $('#ajax').on('click', '#btn', function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: '/games/gwen_highscore',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ counter: turnCounter}),
-            success: () => {updateHS()}
-        })
-    })})
 
 function updateHS(){
+    $.ajax({
+        url: '/games/gwen_highscore',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ hs: hs}),
+        success: () => {HS()}
+    })
+}
+
+function HS(){
     $.ajax({
         url: '/games/test',
         contentType: 'application/json',
         success: (response) => {
-            let user = response.user
-            let UserContent = $('#ax1')
+            hs = response.hs
+            let hs_wsad = ''
+            for(let i = 0; i < 10; i++){
+                let unit_hs = `<div>${hs[i].name} ${hs[i].score}</div>`
+                hs_wsad += unit_hs
+            }
+            let UserContent = $('#ajax')
             UserContent.html('')
                 UserContent.append('\
-                <div>' + user.counter + '</div>\
+                ' + hs_wsad + '\
                 ')
         }})}
