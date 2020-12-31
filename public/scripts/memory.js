@@ -61,24 +61,7 @@ function hide2Cards(nr1, nr2){
 }
 
 $(function() {
-    /*
-    $('#btn').on('click', () => {
-        $.ajax({
-            url: '/games/test',
-            contentType: 'application/json',
-            success: (response) => {
-                let UserContent = $('#ax1')
-                UserContent.html('')
-                    UserContent.append('\
-                    <div>DUPA</div>\
-                    ')
-            }})})
-
-
-*/
-
-
-
+    
     //post
     $('#ajax').on('click', '#btn', function(event) {
         event.preventDefault();
@@ -87,10 +70,19 @@ $(function() {
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ counter: turnCounter}),
-            success: (response) => {
-                console.log(response)
-            }
+            success: () => {updateHS()}
         })
-    })
-    
-})
+    })})
+
+function updateHS(){
+    $.ajax({
+        url: '/games/test',
+        contentType: 'application/json',
+        success: (response) => {
+            let user = response.user
+            let UserContent = $('#ax1')
+            UserContent.html('')
+                UserContent.append('\
+                <div>' + user.counter + '</div>\
+                ')
+        }})}
