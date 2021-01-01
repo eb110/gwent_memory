@@ -43,6 +43,9 @@ p
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 #userName
@@ -50,6 +53,7 @@ p
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    padding-bottom: 15px;
 }
 
 .card
@@ -90,4 +94,27 @@ p
 {
     margin-top: 5px;
     letter-spacing: 2px;
+}
+
+#name
+{
+    background-color: #26282E;
+    color: #209781;
+    font-size: 24px;
+    border: 2px solid #209781;
+    outline: none;
+}
+
+#new_game_btn
+{
+    background-color: #26282E;
+    color: #209781;
+    font-size: 24px;
+    cursor: pointer;
+    border: 2px solid #209781;
+}
+#new_game_btn:hover
+{
+    color: #E9b64a;
+    border: 2px solid #E9b64a;
 }

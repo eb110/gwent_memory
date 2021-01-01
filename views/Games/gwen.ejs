@@ -13,7 +13,8 @@
         <h1>Gwent Memory Test</h1>
         <p>Inspired by <a href="https://www.playgwent.com/pl" target="_blank">Gwent - The Witcher card Game</a></p>
         <div id="userName">
-            <label>Name</label>
+            <label>Type Your Name</label>
+        </br>
             <input 
                 id="name" 
                 value="empty"
@@ -42,9 +43,13 @@
 
                 <div class="score">Turn counter: 0</div>
             </div>
-            
             <div id="ajax">
                 
+            </div>
+            <div id='userName'>
+                <form action='new_game' method="POST">                  
+                    <button id="new_game_btn">New Game</button>
+               </form>
             </div>
         </article>
 
